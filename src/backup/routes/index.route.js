@@ -1,1 +1,0 @@
-import adminRouter from "../../routes/query.route";
