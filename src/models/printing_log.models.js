@@ -1,8 +1,44 @@
 import mongoose from "mongoose";
 
 const PrintingLogSchema = new mongoose.Schema({
-    
+    user_id: {
+        type: String,
+    },
+    printer_id: {
+        type: String,
+    },
+    files: [
+        {
+            id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "files",
+            },
+            url: {
+                type: String,
+                require: true
+            }
+        }
+    ],
+    configurations: [
+        {
+            option: {
+                type: String
+            },
+            value: {
+                type: String
+            }
+        }
+    ],
+    number_of_a3: {
+        type: Number
+    },
+    number_of_a4: {
+        type: Number
+    }
 })
+
+export default mongoose.model("printing_logs", PrintingLogSchema);
+
 // {
 //     "student_id": "",
 //     "printer_id": "",
