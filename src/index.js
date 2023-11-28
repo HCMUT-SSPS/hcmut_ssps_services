@@ -5,6 +5,7 @@ import cors from "cors";
 import fs from "fs";
 import path from "path";
 import connectDatabase from "./configs/connect-mongodb-db.config.js";
+import queryRouter from "./routes/query.route.js";
 
 const app = express();
 const PORT = process.env.PORT || 8081;
@@ -30,7 +31,7 @@ async function main() {
     res.send(indexHtml);
   });
 
-  app.use("/api/v1/")
+  app.use("/api/v1/", queryRouter)
   // start server 
   app.listen(PORT);
 }
